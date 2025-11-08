@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Site Vitrine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Menu overlay initial -->
+  <div id="overlayMenu" class="overlay-menu">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="architecture-interieure.html">Architecture Intérieure</a></li>
+      <li><a href="architecture-exterieure.html">Architecture Extérieure</a></li>
+      <li><a href="decoration.html">Décoration</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="architecture-interieure.html">Architecture Intérieure</a></li>
+        <li><a href="architecture-exterieure.html">Architecture Extérieure</a></li>
+        <li><a href="decoration.html">Décoration</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Bienvenue dans notre univers de design</h1>
+    <p>Des espaces modernes et élégants, adaptés à vos envies.</p>
+    <a href="architecture-interieure.html" class="btn">Voir nos projets</a>
+  </section>
+
+  <!-- APERÇU DES PAGES -->
+  <section class="previews">
+    <h2>Nos réalisations</h2>
+    <div class="preview-grid">
+      <div class="preview-item">
+        <a href="architecture-interieure.html">
+          <img src="images/projet1.png" alt="Architecture Intérieure">
+          <h3>Architecture Intérieure</h3>
+        </a>
+      </div>
+      <div class="preview-item">
+        <a href="architecture-exterieure.html">
+          <img src="images/projet2.png" alt="Architecture Extérieure">
+          <h3>Architecture Extérieure</h3>
+        </a>
+      </div>
+      <div class="preview-item">
+        <a href="decoration.html">
+          <img src="images/projet3.png" alt="Décoration">
+          <h3>Décoration</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Overlay menu show once, hide on first scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.getElementById('overlayMenu');
+      let isOverlayHidden = false;
+
+      window.addEventListener('scroll', () => {
+        if (!isOverlayHidden && window.scrollY > 50) {
+          overlay.classList.add('overlay-hidden');
+          isOverlayHidden = true;
+        }
+      });
+
+      // Fermer overlay au clic sur un lien
+      overlay.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          overlay.classList.add('overlay-hidden');
+          isOverlayHidden = true;
+        });
+      });
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture Intérieure</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="navbar">
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="architecture-interieure.html">Architecture Intérieure</a></li>
+          <li><a href="architecture-exterieure.html">Architecture Extérieure</a></li>
+          <li><a href="decoration.html">Décoration</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+  <section class="portfolio-section">
+    <div class="portfolio-header">
+      <h1>Architecture Intérieure</h1>
+      <p>Découvrez quelques réalisations d'espaces modernes, épurés et harmonieux.</p>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-item" data-title="Appartement Haussmannien" data-description="Rénovation complète d’un appartement parisien, associant le charme de l’ancien à une esthétique contemporaine." data-gallery="images/projet1.png,images/projet2.png,images/projet3.png">
+        <img src="images/projet1.png" alt="Appartement Haussmannien">
+        <div class="overlay">
+          <h2>Appartement Haussmannien</h2>
+          <p>Rénovation complète d’un espace parisien</p>
+        </div>
+      </div>
+
+      <div class="portfolio-item" data-title="Loft Industriel" data-description="Transformation d’un ancien entrepôt en loft lumineux avec des matériaux bruts et du mobilier sur mesure." data-gallery="images/projet2.png,images/projet3.png">
+        <img src="images/projet2.png" alt="Loft Industriel">
+        <div class="overlay">
+          <h2>Loft Industriel</h2>
+          <p>Alliance du brut et du contemporain</p>
+        </div>
+      </div>
+
+      <div class="portfolio-item" data-title="Maison Bord de Mer" data-description="Aménagement d’une maison de vacances axée sur la lumière naturelle et les textures naturelles." data-gallery="images/projet3.png,images/projet1.png">
+        <img src="images/projet3.png" alt="Maison Bord de Mer">
+        <div class="overlay">
+          <h2>Maison Bord de Mer</h2>
+          <p>Un intérieur lumineux et apaisant</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALE PLEIN ÉCRAN -->
+  <div id="imageModal" class="modal">
+    <button id="prevProject" class="modal-nav">&#10094;</button>
+
+    <div class="modal-content">
+      <div class="modal-image-wrapper">
+        <img id="modalImage" src="" alt="">
+        <button id="prevImage" class="inner-nav">&#10094;</button>
+        <button id="nextImage" class="inner-nav">&#10095;</button>
+    </div>
+    <div class="modal-text">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <span id="modalCounter"></span>
+    </div>
+    <span class="modal-close">&times;</span>
+  </div>
+
+
+    <button id="nextProject" class="modal-nav">&#10095;</button>
+    <span class="modal-close">&times;</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

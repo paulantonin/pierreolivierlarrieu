@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture Extérieure</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="architecture-interieure.html">Architecture Intérieure</a></li>
+        <li><a href="architecture-exterieure.html">Architecture Extérieure</a></li>
+        <li><a href="decoration.html">Décoration</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Portfolio Extérieur -->
+  <section class="portfolio-section">
+    <div class="portfolio-header">
+      <h1>Architecture Extérieure</h1>
+      <p>Découvrez nos projets d’espaces extérieurs modernes et harmonieux.</p>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-item"
+           data-title="Maison Contemporaine"
+           data-description="Une façade moderne avec jardin paysager et terrasse design."
+           data-gallery="images/exterieur1.png,images/exterieur2.png">
+        <img src="images/exterieur1.png" alt="Projet Extérieur 1">
+        <div class="overlay">
+          <h2>Maison Contemporaine</h2>
+          <p>Façade moderne et jardin paysager</p>
+        </div>
+      </div>
+
+      <div class="portfolio-item"
+           data-title="Villa Bord de Mer"
+           data-description="Optimisation de l’espace extérieur pour profiter de la vue sur l’océan."
+           data-gallery="images/exterieur3.png,images/exterieur4.png">
+        <img src="images/exterieur3.png" alt="Projet Extérieur 2">
+        <div class="overlay">
+          <h2>Villa Bord de Mer</h2>
+          <p>Vue sur l’océan et espaces ouverts</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modale -->
+  <div id="imageModal" class="modal">
+    <button id="prevProject" class="modal-nav project-nav">&#10094;</button>
+    <div class="modal-content">
+      <button id="prevImage" class="image-nav inner-nav">&#10094;</button>
+      <img id="modalImage" src="" alt="">
+      <button id="nextImage" class="image-nav inner-nav">&#10095;</button>
+      <div class="modal-text">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+        <p id="modalCounter" class="modal-counter"></p>
+      </div>
+    </div>
+    <button id="nextProject" class="modal-nav project-nav">&#10095;</button>
+    <span class="modal-close">&times;</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
