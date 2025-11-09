@@ -265,6 +265,64 @@ header {
   width: 100%;           /* ligne complète sous le texte */
 }
 
+/* Masquer la navbar normale sur petits écrans */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none; /* on cache les liens */
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 60px; /* en dessous de la navbar */
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 1001;
+  }
+
+  .navbar ul.show {
+    display: flex; /* affichage quand le menu burger est ouvert */
+  }
+
+  /* Bouton burger */
+  .burger {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 1002;
+    width: 30px;
+    height: 25px;
+  }
+
+  .burger span {
+    display: block;
+    height: 3px;
+    background: #333;
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+}
+
+/* Cacher le burger sur desktop */
+@media (min-width: 769px) {
+  .burger {
+    display: none;
+  }
+}
+
+.burger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
 
 /* Hero */
 .hero {

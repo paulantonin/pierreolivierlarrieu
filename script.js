@@ -94,3 +94,11 @@ document.addEventListener("DOMContentLoaded", () => {
   nextImage?.addEventListener("click", nextImageFunc);
 });
 
+const burger = document.getElementById('burger');
+const navLinks = document.querySelector('.navbar ul');
+
+burger.addEventListener('click', () => {
+  navLinks.classList.toggle('show'); // montre ou cache le menu
+  burger.classList.toggle('open');   // optionnel pour animation du burger
+});
+
