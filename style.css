@@ -63,19 +63,25 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 3000;
+  cursor: default; /* permet clic hors contenu */
 }
 
+/* contenu centré */
 .modal-content {
   display: flex;
   align-items: center;
   gap: 30px;
   max-width: 90%;
   justify-content: center;
+  position: relative;
+  z-index: 3002;
 }
 
+/* wrapper image pour flèches */
 .modal-image-wrapper {
-  position: relative; /* conteneur pour image + flèches */
+  position: relative;
   display: inline-block;
+  z-index: 3003;
 }
 
 .modal-image-wrapper img {
@@ -87,8 +93,10 @@ body {
 .modal-text {
   max-width: 400px;
   color: #fff;
+  z-index: 3003;
 }
 
+/* CROIX : on garde celle existante mais on la rend bien au-dessus */
 .modal-close {
   position: absolute;
   top: 20px;
@@ -96,6 +104,17 @@ body {
   font-size: 2rem;
   color: white;
   cursor: pointer;
+  z-index: 3010;
+  background: none;
+  border: none;
+  padding: 6px;
+  line-height: 1;
+  -webkit-appearance: none;
+  transition: transform 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.2);
 }
 
 /* Flèches pour naviguer dans la modale */
@@ -109,7 +128,7 @@ body {
   border: none;
   padding: 0;
   cursor: pointer;
-  z-index: 2;
+  z-index: 3005;
 }
 
 /* Flèches projets */
@@ -117,9 +136,8 @@ body {
 #nextProject { right: 15px; }
 
 /* Flèches images attachées à l'image */
-#prevImage { left: 5px; }   /* proche bord gauche de l'image */
-#nextImage { right: 5px; }  /* proche bord droit de l'image */
-
+#prevImage { left: 5px; }
+#nextImage { right: 5px; }
 
 /* Overlay menu transparent au démarrage */
 .overlay-menu {
@@ -148,12 +166,44 @@ body {
   margin: 20px 0;
 }
 
+/* overlay buttons — style de base (si tu ne l'as pas déjà) */
 .overlay-menu ul li a {
-  text-decoration: none;
+  display: inline-block;        /* permet la transformation propre */
+  padding: 14px 24px;           /* zone cliquable confortable */
+  border-radius: 8px;
   color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 700;
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms;
+  transform-origin: center center;
+  will-change: transform, box-shadow;
+}
+
+/* n'activer l'effet hover que sur les appareils qui supportent hover */
+@media (hover: hover) and (pointer: fine) {
+  .overlay-menu ul li a:hover,
+  .overlay-menu ul li a:focus {
+    transform: scale(1.08);                 /* grossit légèrement */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35); /* optionnel : profondeur */
+    outline: none;                          /* on gère focus séparément */
+  }
+}
+
+/* focus visible (accessibilité clavier) */
+.overlay-menu ul li a:focus-visible {
+  transform: scale(1.06);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  outline: 3px solid rgba(255,255,255,0.12); /* repère clavier */
+}
+
+/* Respecter les préférences d'animation de l'utilisateur */
+@media (prefers-reduced-motion: reduce) {
+  .overlay-menu ul li a {
+    transition: none;
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 .overlay-menu ul li a:hover {

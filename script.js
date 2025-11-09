@@ -9,7 +9,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Modale script pour portfolio
+// === MODALE PORTFOLIO ===
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("imageModal");
   if (!modal) return;
@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalTitle = document.getElementById("modalTitle");
   const modalDescription = document.getElementById("modalDescription");
   const modalCounter = document.getElementById("modalCounter");
-  const closeBtn = document.querySelector(".modal-close");
+  const closeBtn = modal.querySelector(".modal-close"); // ta croix existante
+  const modalContent = modal.querySelector(".modal-content");
 
   const prevProject = document.getElementById("prevProject");
   const nextProject = document.getElementById("nextProject");
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentImage = 0;
   let gallery = [];
 
+  // === Affichage de la modale ===
   function showModal(projectIndex, imageIndex = 0) {
     currentProject = projectIndex;
     gallery = portfolioItems[currentProject].dataset.gallery.split(",");
@@ -41,12 +43,16 @@ document.addEventListener("DOMContentLoaded", () => {
     modalCounter.textContent = `${currentImage + 1} / ${gallery.length}`;
 
     modal.style.display = "flex";
+    document.body.style.overflow = "hidden"; // empêche le scroll derrière
   }
 
+  // === Fermeture ===
   function closeModal() {
     modal.style.display = "none";
+    document.body.style.overflow = "auto";
   }
 
+  // === Navigation ===
   function nextProjectFunc() { 
     currentProject = (currentProject + 1) % portfolioItems.length; 
     showModal(currentProject, 0); 
@@ -64,10 +70,24 @@ document.addEventListener("DOMContentLoaded", () => {
     showModal(currentProject, currentImage); 
   }
 
-  portfolioItems.forEach((item, index) => item.addEventListener("click", () => showModal(index)));
-  closeBtn.addEventListener("click", closeModal);
-  modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+  // === Événements ===
+  portfolioItems.forEach((item, index) => 
+    item.addEventListener("click", () => showModal(index))
+  );
 
+  if (closeBtn) closeBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // évite fermeture double
+    closeModal();
+  });
+
+  // clic hors contenu → fermer
+  modal.addEventListener("click", (e) => {
+    if (!modalContent.contains(e.target)) {
+      closeModal();
+    }
+  });
+
+  // navigation
   prevProject?.addEventListener("click", prevProjectFunc);
   nextProject?.addEventListener("click", nextProjectFunc);
   prevImage?.addEventListener("click", prevImageFunc);
