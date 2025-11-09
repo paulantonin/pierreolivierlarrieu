@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       closeModal();
     });
 
+    // clic hors contenu → fermer
     modal.addEventListener("click", (e) => {
       if (!modalContent.contains(e.target)) closeModal();
     });
@@ -89,13 +90,13 @@ document.addEventListener("DOMContentLoaded", () => {
     nextImage?.addEventListener("click", nextImageFunc);
   }
 
-  // === MENU BURGER ===
+  // === MENU BURGER MOBILE ===
   const burger = document.getElementById('burger');
-  const navLinks = document.querySelector('.navbar ul');
+  const navLinks = document.querySelector('.nav-links'); // utiliser la classe nav-links pour mobile
 
   if (burger && navLinks) {
     burger.addEventListener('click', () => {
-      navLinks.classList.toggle('show'); // montre ou cache le menu
+      navLinks.classList.toggle('show'); // glisse le menu depuis la droite
       burger.classList.toggle('open');   // animation du burger
     });
   }
